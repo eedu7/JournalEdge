@@ -7,7 +7,9 @@ export const Header = () => {
     return (
         <header className="mx-auto flex w-full max-w-7xl items-center justify-between">
             <div>
-                <h1 className="text-lg font-bold">JournelEdge</h1>
+                <Link href="/">
+                    <h1 className="text-lg font-bold">JournelEdge</h1>
+                </Link>
             </div>
             <div className="space-x-2">
                 <Button
