@@ -31,9 +31,9 @@ export default function HomePage() {
                 Welcome to JournalEdge
             </h1>
             <p className={cn("mt-4 max-w-xl text-gray-600 md:text-lg dark:text-gray-300", merriweather.className)}>
-                JournalEdge empowers traders to log, analyze, and refine their strategies with detailed trade tracking,
-                powerful analytics, and insightful performance metrics. Make every trade a calculated decision.
+                Track your trades, analyze your performance, and improve your strategy — all in one place.
             </p>
+
             <div className="mt-8">
                 <Button asChild>
                     <Link href="/dashboard">Dashboard</Link>
