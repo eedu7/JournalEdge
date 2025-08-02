@@ -1,0 +1,32 @@
+{
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "singleAttributePerLine": true,
+  "singleQuote": false,
+  "semi": true,
+  "jsxSingleQuote": false,
+  "printWidth": 120,
+  "tabWidth": 4,
+  "plugins": ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+  "importOrder": [
+    "^react$",
+    "^next(.*)$",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/.*/schemas$",
+    "^@/.*/schemas/(.*)$",
+    "",
+    "^@/components/(.*)$",
+    "^@/.*/_components/(.*)",
+    "",
+    "^@/lib/(.*)$",
+    "^@/utils/(.*)$",
+    "",
+    "^@/styles/(.*)$",
+    "",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
