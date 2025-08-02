@@ -1,6 +1,7 @@
 import { Merriweather, Poppins } from "next/font/google";
 import Link from "next/link";
 
+import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
@@ -21,24 +22,27 @@ const merriweather = Merriweather({
 
 export default function HomePage() {
     return (
-        <div className="flex h-screen w-screen flex-col items-center justify-center px-4 text-center">
-            <h1
-                className={cn(
-                    "text-2xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-white",
-                    poppins.className,
-                )}
-            >
-                Welcome to JournalEdge
-            </h1>
-            <p className={cn("mt-4 max-w-xl text-gray-600 md:text-lg dark:text-gray-300", merriweather.className)}>
-                Track your trades, analyze your performance, and improve your strategy — all in one place.
-            </p>
+        <div className="flex min-h-screen flex-col py-4">
+            <Header />
+            <main className="flex w-screen flex-1 flex-col items-center justify-center px-4 text-center">
+                <h1
+                    className={cn(
+                        "text-2xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-white",
+                        poppins.className,
+                    )}
+                >
+                    Welcome to JournalEdge
+                </h1>
+                <p className={cn("mt-4 max-w-xl text-gray-600 md:text-lg dark:text-gray-300", merriweather.className)}>
+                    Track your trades, analyze your performance, and improve your strategy — all in one place.
+                </p>
 
-            <div className="mt-8">
-                <Button asChild>
-                    <Link href="/dashboard">Dashboard</Link>
-                </Button>
-            </div>
+                <div className="mt-8">
+                    <Button asChild>
+                        <Link href="/dashboard">Dashboard</Link>
+                    </Button>
+                </div>
+            </main>
         </div>
     );
 }
