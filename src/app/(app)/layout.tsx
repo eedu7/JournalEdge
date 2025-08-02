@@ -1,5 +1,13 @@
 import React from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-    return <main>{children}</main>;
+import { SidebarProvider } from "@/components/ui/sidebar";
+import AppSidebar from "@/app/(app)/_components/AppSidebar";
+
+export default function AppLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <SidebarProvider>
+            <AppSidebar />
+            <main>{children}</main>
+        </SidebarProvider>
+    );
 }
