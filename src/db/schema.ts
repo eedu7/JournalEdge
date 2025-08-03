@@ -7,6 +7,7 @@ export const symbols = pgTable("symbols", {
     type: varchar("type", { length: 20 }),
     exchange: varchar("exchange", { length: 100 }),
     currency: varchar("currency", { length: 10 }),
+    clerkUserId: varchar("clerk_user_id", { length: 255 }).notNull(),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });

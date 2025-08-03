@@ -1,5 +1,6 @@
 import { cache } from "react";
 
+import { auth } from "@clerk/nextjs/server";
 import { initTRPC } from "@trpc/server";
 
 import { db } from "@/utils/drizzle";
@@ -26,5 +27,11 @@ const t = initTRPC.create({
 export const createTRPCRouter = t.router;
 export const createCallerFactory = t.createCallerFactory;
 export const baseProcedure = t.procedure.use(async ({ next }) => {
-    return next({ ctx: { db } });
+    const { userId } = await auth();
+
+    if (!userId) {
+        throw new Error("Not logged in");
+    }
+
+    return next({ ctx: { db, user: { clerkUserId: userId } } });
 });
