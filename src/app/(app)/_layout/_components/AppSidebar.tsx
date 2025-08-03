@@ -1,18 +1,9 @@
 import React from "react";
-import Link from "next/link";
 
-import { sidebarItems } from "@/app/(app)/_layout/constants";
-
-import {
-    Sidebar,
-    SidebarContent,
-    SidebarGroup,
-    SidebarGroupContent,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-} from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarFooter } from "@/components/ui/sidebar";
+import { AppSidebarFooter } from "@/app/(app)/_layout/_components/AppSidebarFooter";
 import { AppSidebarHeader } from "@/app/(app)/_layout/_components/AppSidebarHeader";
+import { AppSidebarNavigation } from "@/app/(app)/_layout/_components/AppSidebarNavigation";
 
 export default function AppSidebar() {
     return (
@@ -22,26 +13,11 @@ export default function AppSidebar() {
         >
             <AppSidebarHeader />
             <SidebarContent>
-                <SidebarGroup>
-                    <SidebarGroupContent>
-                        <SidebarMenu>
-                            {sidebarItems.map((item, index) => (
-                                <SidebarMenuItem key={index}>
-                                    <SidebarMenuButton asChild>
-                                        <Link
-                                            href={item.href}
-                                            prefetch={false}
-                                        >
-                                            <item.icon />
-                                            <span>{item.label}</span>
-                                        </Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
+                <AppSidebarNavigation />
             </SidebarContent>
+            <SidebarFooter>
+                <AppSidebarFooter />
+            </SidebarFooter>
         </Sidebar>
     );
 }

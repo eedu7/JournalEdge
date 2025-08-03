@@ -22,9 +22,9 @@ const merriweather = Merriweather({
 
 export default function HomePage() {
     return (
-        <div className="flex min-h-screen flex-col py-4">
+        <div className="flex min-h-screen flex-col px-2 py-4">
             <Header />
-            <main className="flex w-screen flex-1 flex-col items-center justify-center px-4 text-center">
+            <main className="flex flex-1 flex-col items-center justify-center px-4 text-center">
                 <h1
                     className={cn(
                         "text-2xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-white",
