@@ -1,3 +1,4 @@
+import { symbolsProcedures } from "@/app/(app)/symbols/_server/procedures";
 import { z } from "zod";
 
 import { baseProcedure, createTRPCRouter } from "../init";
@@ -14,6 +15,7 @@ export const appRouter = createTRPCRouter({
                 greeting: `hello ${opts.input.text}`,
             };
         }),
+    symbols: symbolsProcedures,
 });
 
 // export type definition of API
