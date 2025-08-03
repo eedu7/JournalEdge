@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Sidebar, SidebarContent, SidebarFooter } from "@/components/ui/sidebar";
+import { AppSidebarAssets } from "@/app/(app)/_layout/_components/AppSidebarAssets";
 import { AppSidebarFooter } from "@/app/(app)/_layout/_components/AppSidebarFooter";
 import { AppSidebarHeader } from "@/app/(app)/_layout/_components/AppSidebarHeader";
 import { AppSidebarNavigation } from "@/app/(app)/_layout/_components/AppSidebarNavigation";
@@ -14,6 +15,7 @@ export default function AppSidebar() {
             <AppSidebarHeader />
             <SidebarContent>
                 <AppSidebarNavigation />
+                <AppSidebarAssets />
             </SidebarContent>
             <SidebarFooter>
                 <AppSidebarFooter />
