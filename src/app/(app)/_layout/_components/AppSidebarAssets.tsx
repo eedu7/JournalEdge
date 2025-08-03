@@ -3,9 +3,8 @@ import React from "react";
 import {
     SidebarGroup,
     SidebarGroupContent,
+    SidebarGroupLabel,
     SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
     SidebarMenuSub,
     SidebarMenuSubButton,
     SidebarMenuSubItem,
@@ -16,9 +15,7 @@ export const AppSidebarAssets = () => {
         <SidebarGroup>
             <SidebarGroupContent>
                 <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton disabled>Assets</SidebarMenuButton>
-                    </SidebarMenuItem>
+                    <SidebarGroupLabel>Assets</SidebarGroupLabel>
                     <SidebarMenuSub>
                         <SidebarMenuSubItem>
                             <SidebarMenuSubButton href="/symbols">Symbols</SidebarMenuSubButton>

@@ -7,7 +7,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <main>{children}</main>
+            <div className="w-full px-2 py-4">{children}</div>
         </SidebarProvider>
     );
 }
