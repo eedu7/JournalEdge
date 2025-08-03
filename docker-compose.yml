@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:17.5-bookworm
+    restart: always
+    environment:
+      POSTGRES_DB: journal-edge
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgresData:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+volumes:
+  postgresData:
