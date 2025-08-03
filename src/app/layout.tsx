@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 
+import { TRPCProvider } from "@/trpc/client";
 import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Geist({
@@ -28,7 +29,9 @@ export default function RootLayout({
     return (
         <ClerkProvider>
             <html lang="en">
-                <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+                <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+                    <TRPCProvider>{children}</TRPCProvider>
+                </body>
             </html>
         </ClerkProvider>
     );
