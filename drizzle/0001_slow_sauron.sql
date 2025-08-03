@@ -1,0 +1,1 @@
+ALTER TABLE "symbols" ADD COLUMN "clerk_user_id" varchar(255) NOT NULL;

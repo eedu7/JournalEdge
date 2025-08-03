@@ -8,6 +8,13 @@
       "when": 1754196537778,
       "tag": "0000_broken_tigra",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1754203996140,
+      "tag": "0001_slow_sauron",
+      "breakpoints": true
     }
   ]
 }
