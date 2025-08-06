@@ -37,6 +37,7 @@ export const SymbolsColumns: ColumnDef<z.infer<typeof FullSymbolSchema>>[] = [
                         <Button
                             size="icon"
                             variant="ghost"
+                            className="cursor-pointer"
                         >
                             <MoreVerticalIcon />
                         </Button>

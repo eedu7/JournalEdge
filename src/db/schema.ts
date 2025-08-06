@@ -28,10 +28,10 @@ export const trades = pgTable("trades", {
     symbol: uuid("symbol_id")
         .references(() => symbols.id)
         .notNull(),
+    tag: varchar("trade_status", { length: 30 }),
     entryPrice: integer("entry_price"),
     exitPrice: integer("exit_price"),
     tradeStatus: varchar("trade_status", { length: 30 }),
-    tag: varchar("trade_status", { length: 30 }),
     riskToReward: integer("risk_to_reward"),
     actualRiskToReward: integer("actual_risk_to_reward"),
     riskToTrade: integer("risk_to_trade"),
