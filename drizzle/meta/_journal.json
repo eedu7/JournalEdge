@@ -15,6 +15,13 @@
       "when": 1754203996140,
       "tag": "0001_slow_sauron",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1754477118984,
+      "tag": "0002_premium_selene",
+      "breakpoints": true
     }
   ]
 }

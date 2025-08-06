@@ -20,20 +20,18 @@ export const AddSymbolForm = () => {
         defaultValues: {
             symbol: "",
             name: "",
-            currency: "USD",
-            exchange: "NASDAQ",
-            type: "Equity",
         },
     });
 
     // TODO: Invalidate the query for `getMany` symbols, after successful
-    // const utils = trpc.useUtils();
+    const utils = trpc.useUtils();
 
     const mutation = trpc.symbols.add.useMutation({
         onSuccess: () => {
             form.resetField("symbol");
             form.resetField("name");
             form.setFocus("symbol");
+            utils.symbols.getMany.invalidate();
             toast.success("Symbol added successfully");
         },
         onError: () => {
@@ -49,7 +47,7 @@ export const AddSymbolForm = () => {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="grid gap-2 space-y-4 p-2 md:grid-cols-3 lg:grid-cols-5"
+                className="space-y-8"
             >
                 <FormField
                     name="symbol"
@@ -82,67 +80,21 @@ export const AddSymbolForm = () => {
                     )}
                 />
 
-                <FormField
-                    name="currency"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Currency</FormLabel>
-                            <FormControl>
-                                <Input
-                                    placeholder="USD"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
+                <Button
+                    className="w-full"
+                    disabled={mutation.isPending}
+                    type="submit"
+                    onClick={form.handleSubmit(onSubmit)}
+                >
+                    {mutation.isPending ? (
+                        <div className="flex items-center gap-2">
+                            <Loader2 className="repeat-infinite animate-spin" />
+                            <span>Adding...</span>
+                        </div>
+                    ) : (
+                        "Add symbols"
                     )}
-                />
-                <FormField
-                    name="exchange"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Exchange</FormLabel>
-                            <FormControl>
-                                <Input
-                                    placeholder="Exchange"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    name="type"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Type</FormLabel>
-                            <FormControl>
-                                <Input
-                                    placeholder="Type"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <div className="flex h-full w-full items-center lg:col-start-5 lg:items-end">
-                    <Button
-                        className="w-full"
-                        disabled={mutation.isPending}
-                        type="submit"
-                    >
-                        {mutation.isPending ? (
-                            <div className="flex items-center gap-2">
-                                <Loader2 className="repeat-infinite animate-spin" />
-                                <span>Adding...</span>
-                            </div>
-                        ) : (
-                            "Add symbols"
-                        )}
-                    </Button>
-                </div>
+                </Button>
             </form>
         </Form>
     );
