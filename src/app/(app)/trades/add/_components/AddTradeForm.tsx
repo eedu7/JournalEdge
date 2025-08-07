@@ -5,7 +5,9 @@ import React from "react";
 import { TradeSchema } from "@/app/(app)/trades/schema";
 import { trpc } from "@/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -38,8 +40,22 @@ export const AddTradeForm = () => {
         mode: "all",
     });
 
+    const mutation = trpc.trades.add.useMutation({
+        onSuccess: () => {
+            toast.success("Trade added successfully");
+            form.reset();
+        },
+        onError: (error) => {
+            if (error.message) {
+                toast.error("Failed to add trade " + error.message);
+            } else {
+                toast.error("Failed to add trade.");
+            }
+        },
+    });
+
     const onSubmit = async (values: z.infer<typeof TradeSchema>) => {
-        alert(JSON.stringify(values, null, 2));
+        mutation.mutate(values);
     };
 
     return (
@@ -98,7 +114,9 @@ export const AddTradeForm = () => {
                                         type="number"
                                         placeholder="0"
                                         value={field.value}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                        onChange={(e) => {
+                                            field.onChange(e.target.valueAsNumber);
+                                        }}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -337,8 +355,18 @@ export const AddTradeForm = () => {
                         </FormItem>
                     )}
                 />
-
-                <Button>Submit</Button>
+                <div className="flex w-full justify-end">
+                    <Button disabled={mutation.isPending}>
+                        {mutation.isPending ? (
+                            <div className="flex items-center gap-2">
+                                <Loader2 className="repeat-infinite animate-spin" />
+                                <span>Adding...</span>
+                            </div>
+                        ) : (
+                            "Add trade"
+                        )}
+                    </Button>
+                </div>
             </form>
         </Form>
     );

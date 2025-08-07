@@ -3,7 +3,6 @@ import { symbols } from "@/db/schema";
 import { baseProcedure, createTRPCRouter } from "@/trpc/init";
 import { eq } from "drizzle-orm";
 
-// TODO: Use symbolsProcedures in the trpc/routers
 export const symbolsProcedures = createTRPCRouter({
     getMany: baseProcedure.query(async ({ ctx }) => {
         const results = await ctx.db.query.symbols.findMany({

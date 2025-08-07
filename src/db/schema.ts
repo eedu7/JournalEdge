@@ -28,7 +28,7 @@ export const trades = pgTable("trades", {
     symbol: uuid("symbol_id")
         .references(() => symbols.id)
         .notNull(),
-    tag: varchar("trade_status", { length: 30 }),
+    tag: varchar("tag", { length: 30 }),
     entryPrice: integer("entry_price"),
     exitPrice: integer("exit_price"),
     tradeStatus: varchar("trade_status", { length: 30 }),
@@ -42,4 +42,7 @@ export const trades = pgTable("trades", {
     mistakeDescription: text("mistake_description"),
     strategyDescription: text("strategy_description"),
     learningDescription: text("learning_description"),
+    clerkUserId: varchar("clerk_user_id", { length: 255 }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });

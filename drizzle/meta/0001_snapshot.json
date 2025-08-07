@@ -1,6 +1,6 @@
 {
-  "id": "9f6d7b63-dfc3-4a74-a010-1d45854328b7",
-  "prevId": "e332aa0c-ed7e-4854-81e4-5f5d1a33142c",
+  "id": "e74e1e9c-fba7-47ce-9331-c139566bc2a3",
+  "prevId": "c2255668-338b-42bb-940a-8dcaf6bc8c66",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -27,21 +27,133 @@
           "primaryKey": false,
           "notNull": true
         },
-        "type": {
-          "name": "type",
-          "type": "varchar(20)",
+        "clerk_user_id": {
+          "name": "clerk_user_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.trades": {
+      "name": "trades",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "symbol_id": {
+          "name": "symbol_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tag": {
+          "name": "tag",
+          "type": "varchar(30)",
           "primaryKey": false,
           "notNull": false
         },
-        "exchange": {
-          "name": "exchange",
-          "type": "varchar(100)",
+        "entry_price": {
+          "name": "entry_price",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "currency": {
-          "name": "currency",
-          "type": "varchar(10)",
+        "exit_price": {
+          "name": "exit_price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trade_status": {
+          "name": "trade_status",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "risk_to_reward": {
+          "name": "risk_to_reward",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_risk_to_reward": {
+          "name": "actual_risk_to_reward",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "risk_to_trade": {
+          "name": "risk_to_trade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "profit_n_loss": {
+          "name": "profit_n_loss",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trade_grade": {
+          "name": "trade_grade",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "news_day": {
+          "name": "news_day",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "impact_of_news_day": {
+          "name": "impact_of_news_day",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mistake_description": {
+          "name": "mistake_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "strategy_description": {
+          "name": "strategy_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "learning_description": {
+          "name": "learning_description",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -67,7 +179,21 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "trades_symbol_id_symbols_id_fk": {
+          "name": "trades_symbol_id_symbols_id_fk",
+          "tableFrom": "trades",
+          "tableTo": "symbols",
+          "columnsFrom": [
+            "symbol_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},

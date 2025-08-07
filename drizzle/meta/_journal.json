@@ -5,29 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1754196537778,
-      "tag": "0000_broken_tigra",
+      "when": 1754537721490,
+      "tag": "0000_condemned_ghost_rider",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1754203996140,
-      "tag": "0001_slow_sauron",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1754477118984,
-      "tag": "0002_premium_selene",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1754478654505,
-      "tag": "0003_nice_annihilus",
+      "when": 1754538159295,
+      "tag": "0001_aberrant_mephisto",
       "breakpoints": true
     }
   ]

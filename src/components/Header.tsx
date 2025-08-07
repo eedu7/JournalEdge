@@ -7,6 +7,8 @@ import { UserButton, useUser } from "@clerk/nextjs";
 
 import { Button } from "@/components/ui/button";
 
+// TODO: Make use of server components here
+
 export const Header = () => {
     const { isSignedIn, user } = useUser();
 
