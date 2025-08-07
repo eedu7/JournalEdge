@@ -1,26 +1,56 @@
 "use client";
 
-import { TradeSchema } from "@/app/(app)/trades/schema";
 import { ColumnDef } from "@tanstack/table-core";
 import { MoreVerticalIcon, PenIcon, TrashIcon } from "lucide-react";
-import { z } from "zod";
+
+
 
 import { Button } from "@/components/ui/button";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-const FullTradeSchema = TradeSchema.extend({
-    id: z.uuid(),
-    clerkUserId: z.string(),
-});
 
-export const TradesColumns: ColumnDef<z.infer<typeof FullTradeSchema>>[] = [
+
+
+
+// const FullTradeSchema = TradeSchema.extend({
+
+// const FullTradeSchema = TradeSchema.extend({
+
+// const FullTradeSchema = TradeSchema.extend({
+
+// const FullTradeSchema = TradeSchema.extend({
+
+// const FullTradeSchema = TradeSchema.extend({
+
+// const FullTradeSchema = TradeSchema.extend({
+
+// const FullTradeSchema = TradeSchema.extend({
+//     id: z.uuid(),
+//     clerkUserId: z.string(),
+// });
+
+type TradeRow = {
+    id: string;
+    symbolName: string;
+    clerkUserId: string;
+    tag: string | null;
+    entryPrice: number | null;
+    exitPrice: number | null;
+    tradeStatus: string | null;
+    riskToReward: number | null;
+    actualRiskToReward: number | null;
+    riskToTrade: number | null;
+    profitNLoss: number | null;
+    tradeGrade: string | null;
+    newsDay: boolean | null;
+    impactOfNewsDay: string | null;
+    mistakeDescription: string | null;
+};
+
+// export const TradesColumns: ColumnDef<z.infer<typeof FullTradeSchema>>[] = [
+export const TradesColumns: ColumnDef<TradeRow>[] = [
     {
-        accessorKey: "symbol",
+        accessorKey: "symbolName",
         header: "Symbol",
     },
     {

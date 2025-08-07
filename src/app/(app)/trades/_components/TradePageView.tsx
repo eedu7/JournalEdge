@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 
+import { HydrateClient, trpc } from "@/trpc/server";
 import { PlusIcon } from "lucide-react";
+import { ErrorBoundary } from "react-error-boundary";
 
-import { AddSymbolFormDialog } from "@/app/(app)/symbols/_components/AddSymbolFormDialog";
-import { SymbolsDataTableView } from "@/app/(app)/symbols/_components/SymbolsDataTableView";
+import { TradesDataTable } from "@/app/(app)/trades/_components/TradesDataTable";
 
 export const TradePageView = () => {
+    void trpc.trades.getMany.prefetch();
     return (
         <div className="flex h-full flex-col space-y-4">
             <div>
@@ -22,14 +24,14 @@ export const TradePageView = () => {
                         <span>Add Trade</span>
                     </Link>
                 </div>
-                {/*<HydrateClient>*/}
-                {/*    /!*TODO: Add a loading state*!/*/}
-                {/*    <ErrorBoundary fallback={<div>Something went wrong...</div>}>*/}
-                {/*        <Suspense fallback={<div>Loading...</div>}>*/}
-                {/*            <SymbolsDataTableView />*/}
-                {/*        </Suspense>*/}
-                {/*    </ErrorBoundary>*/}
-                {/*</HydrateClient>*/}
+                <HydrateClient>
+                    {/*TODO: Add a loading state*/}
+                    <ErrorBoundary fallback={<div>Something went wrong...</div>}>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <TradesDataTable />
+                        </Suspense>
+                    </ErrorBoundary>
+                </HydrateClient>
             </main>
         </div>
     );

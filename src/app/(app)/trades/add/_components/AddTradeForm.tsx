@@ -40,8 +40,11 @@ export const AddTradeForm = () => {
         mode: "all",
     });
 
+    const utils = trpc.useUtils();
+
     const mutation = trpc.trades.add.useMutation({
         onSuccess: () => {
+            utils.trades.getMany.invalidate();
             toast.success("Trade added successfully");
             form.reset();
         },
