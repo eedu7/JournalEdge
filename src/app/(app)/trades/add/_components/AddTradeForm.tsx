@@ -15,6 +15,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { DateInput } from "@/app/(app)/trades/add/_components/DateInput";
 import { SymbolsInput } from "@/app/(app)/trades/add/_components/SymbolsInput";
 
 export const AddTradeForm = () => {
@@ -23,6 +24,10 @@ export const AddTradeForm = () => {
         defaultValues: {
             symbol: "",
             tag: "",
+            entryDate: "",
+            exitDate: "",
+            entryTime: "12:00:00",
+            exitTime: "00:00:00",
             entryPrice: 0,
             exitPrice: 0,
             tradeStatus: "Win",
@@ -58,7 +63,8 @@ export const AddTradeForm = () => {
     });
 
     const onSubmit = async (values: z.infer<typeof TradeSchema>) => {
-        mutation.mutate(values);
+        alert(JSON.stringify(values, null, 2));
+        // mutation.mutate(values);
     };
 
     return (
@@ -104,6 +110,80 @@ export const AddTradeForm = () => {
                             </FormItem>
                         )}
                     />
+                </div>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div className="space-y-4">
+                        <FormField
+                            control={form.control}
+                            name="entryDate"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="text-xs md:text-base">Entry Date</FormLabel>
+                                    <FormControl>
+                                        <DateInput
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="entryTime"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="text-xs md:text-base">Entry Time</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="time"
+                                            placeholder="0"
+                                            className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                    <div className="space-y-4">
+                        <FormField
+                            control={form.control}
+                            name="exitDate"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="text-xs md:text-base">Exit Date</FormLabel>
+                                    <FormControl>
+                                        <DateInput
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="exitTime"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="text-xs md:text-base">Exit Time</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="time"
+                                            placeholder="12:01 PM"
+                                            className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
                     <FormField

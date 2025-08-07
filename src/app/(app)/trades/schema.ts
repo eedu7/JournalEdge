@@ -3,6 +3,10 @@ import { z } from "zod";
 export const TradeSchema = z.object({
     symbol: z.string(),
     tag: z.string(),
+    entryDate: z.string(),
+    exitDate: z.string(),
+    entryTime: z.string(),
+    exitTime: z.string(),
     entryPrice: z.number(),
     exitPrice: z.number(),
     tradeStatus: z.string(),

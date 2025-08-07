@@ -1,4 +1,4 @@
-import { boolean, integer, pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
+import { boolean, date, integer, pgTable, text, time, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 
 export const symbols = pgTable("symbols", {
     id: uuid("id").primaryKey().defaultRandom(),
@@ -31,6 +31,10 @@ export const trades = pgTable("trades", {
     tag: varchar("tag", { length: 30 }),
     entryPrice: integer("entry_price"),
     exitPrice: integer("exit_price"),
+    entryDate: date("entry_date"),
+    exitDate: date("exit_date"),
+    entryTime: time("entry_time"),
+    exitTime: time("exit_time"),
     tradeStatus: varchar("trade_status", { length: 30 }),
     riskToReward: integer("risk_to_reward"),
     actualRiskToReward: integer("actual_risk_to_reward"),
