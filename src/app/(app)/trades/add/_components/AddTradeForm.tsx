@@ -112,7 +112,7 @@ export const AddTradeForm = () => {
                     />
                 </div>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <FormField
                             control={form.control}
                             name="entryDate"
@@ -148,7 +148,7 @@ export const AddTradeForm = () => {
                             )}
                         />
                     </div>
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <FormField
                             control={form.control}
                             name="exitDate"
