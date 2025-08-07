@@ -30,7 +30,7 @@ export const AddTradeForm = () => {
             exitTime: "00:00:00",
             entryPrice: 0,
             exitPrice: 0,
-            tradeStatus: "Win",
+            tradeStatus: "",
             riskToReward: 0,
             actualRiskToReward: 0,
             riskToTrade: 0,
@@ -232,10 +232,16 @@ export const AddTradeForm = () => {
                                 <FormItem>
                                     <FormLabel className="text-xs md:text-base">Trade Status</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            placeholder="Win"
-                                            {...field}
-                                        />
+                                        <Select>
+                                            <SelectTrigger className="w-full">
+                                                <SelectValue placeholder="Select a status" />
+                                            </SelectTrigger>
+                                            <SelectContent className="max-h-40">
+                                                <SelectItem value="win">Win</SelectItem>
+                                                <SelectItem value="loss">Loss</SelectItem>
+                                                <SelectItem value="winNloss">Win/Loss</SelectItem>
+                                            </SelectContent>
+                                        </Select>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
